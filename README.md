@@ -1,64 +1,29 @@
 # GooglePlayServiceLocationSupport
 This library is used to handle location requests and maintains the flow with permission checks in marshmallow.
 
-<!--![Square Initials](images/one.png)
+![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
 ![Alternate Initial Square Image](images/three.png)
 ![Alternate Initial Circular Image](images/four.png)
-Gradle
+<!--Gradle
 -------------------------
 
 ```
 dependencies {
-    compile 'com.imageletter:ImageLetterIcon:1.0'
+    compile 'com.github.akashandroid90.googlelocationsupport:googlelocationsupport:1.0'
 }
-```
+```-->
 
 Usage
 -----
 
-Declare in XML (see xml attributes below for customization):
-
-```xml
-<com.imageletter.MaterialLetterIcon
-    android:layout_width="@dimen/letter_icon_size"
-    android:layout_height="@dimen/letter_icon_size" />
-```
-
-Or static initializer (see xml attributes below for customization):
-
 ```java
-MaterialLetterIcon icon = new MaterialLetterIcon.Builder(context) //
-            .shapeColor(getResources().getColor(R.color.circle_color))
-            .setShapeType(MaterialLetterIcon.SHAPE_CIRCLE)
-            .letter("S")
-            .letterColor(getResources().getColor(R.color.letter_color))
-            .letterSize(26)
-            .lettersNumber(1)
-            .letterTypeface(yourTypeface)
-            .initials(false)
-            .initialsNumber(2)
-            .create();
+public class MainActivity extends AppLocationActivity {}
 ```
-
-
-Configure using xml attributes or setters in code:
-
+or
 ```java
-app:shape_color="@color/black"      // shape color
-app:shape_type="circle"             // shape type
-app:letter=""                       // letter or string to get first letter from
-app:letter_color="@color/white"     // letter color
-app:letter_size="26"                // letter size SP
-app:letters_number="1"              // number of letters to get from string
-app:initials="false"                // turn on initials mode
-app:initials_number="2"             // number of initials to be showed
-app:corner_radius="1dp"             // radius of image to make at corner
-app:is_oval="true"                  // to make a circular image
-app:border_width="1dp"              // border width around the image
-app:border_color="@color/black"     //border color around image
+public class LocationFragment extends AppLocationFragment {}
 ```
--->
 
 Developed By
 --------------------
