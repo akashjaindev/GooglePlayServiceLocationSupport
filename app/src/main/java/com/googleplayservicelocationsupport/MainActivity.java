@@ -3,12 +3,10 @@ package com.googleplayservicelocationsupport;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.akashandroid90.googlelocationsupport.AppLocationActivity;
-import com.google.android.gms.location.LocationRequest;
+import com.github.akashandroid90.googlesupport.location.AppLocationActivity;
 
 
 public class MainActivity extends AppLocationActivity {

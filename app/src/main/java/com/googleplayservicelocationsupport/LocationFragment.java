@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.akashandroid90.googlelocationsupport.AppLocationFragment;
+import com.github.akashandroid90.googlesupport.location.AppLocationFragment;
 import com.google.android.gms.location.LocationRequest;
 
 /**

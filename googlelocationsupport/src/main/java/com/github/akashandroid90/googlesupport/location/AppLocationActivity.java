@@ -1,4 +1,4 @@
-package com.github.akashandroid90.googlelocationsupport;
+package com.github.akashandroid90.googlesupport.location;
 
 
 import android.Manifest;
