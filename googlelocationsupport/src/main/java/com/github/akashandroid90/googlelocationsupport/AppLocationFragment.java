@@ -46,7 +46,7 @@ public abstract class AppLocationFragment extends Fragment
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private LocationManager mLocationservice;
-    private LocationSettingsStates mLocationSettingsStates;
+//    private LocationSettingsStates mLocationSettingsStates;
     private Context mContext;
     private boolean enableUpdates;
 
@@ -98,7 +98,7 @@ public abstract class AppLocationFragment extends Fragment
             @Override
             public void onResult(LocationSettingsResult result) {
                 final Status status = result.getStatus();
-                mLocationSettingsStates = result.getLocationSettingsStates();
+//                mLocationSettingsStates = result.getLocationSettingsStates();
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
                         // All location settings are satisfied. The client can initialize location
@@ -139,7 +139,10 @@ public abstract class AppLocationFragment extends Fragment
         mLocationRequest = LocationRequest.create();
 
         Bundle bundle = getArguments();
+        if(bundle!=null)
         enableUpdates = bundle.getBoolean(AppLocation.REQUEST_UPDATES, true);
+        else
+            enableUpdates = true;
 
     }
 
@@ -178,10 +181,10 @@ public abstract class AppLocationFragment extends Fragment
 
     @Override
     public void onStart() {
-        if (mLocationSettingsStates != null && mLocationSettingsStates.isLocationUsable()) {
+//        if (mLocationSettingsStates != null && mLocationSettingsStates.isLocationUsable()) {
             if (!servicesConnected())
                 mGoogleApiClient.connect();
-        }
+//        }
         super.onStart();
     }
 

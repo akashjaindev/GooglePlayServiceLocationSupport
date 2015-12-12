@@ -42,11 +42,11 @@ public abstract class AppLocationActivity extends FragmentActivity
     private final long MINIMUM_DISTANCE = 1000;
     private final int MILLISECONDS_PER_SECOND = 100;
     private final int UPDATE_INTERVAL_IN_SECONDS = 500;
-    private final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
+//    private final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private LocationManager mLocationservice;
-    private LocationSettingsStates mLocationSettingsStates;
+//    private LocationSettingsStates mLocationSettingsStates;
     private boolean enableUpdates;
 
     @Override
@@ -86,7 +86,7 @@ public abstract class AppLocationActivity extends FragmentActivity
             @Override
             public void onResult(LocationSettingsResult result) {
                 final Status status = result.getStatus();
-                mLocationSettingsStates = result.getLocationSettingsStates();
+//                mLocationSettingsStates = result.getLocationSettingsStates();
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
                         // All location settings are satisfied. The client can initialize location
@@ -164,10 +164,10 @@ public abstract class AppLocationActivity extends FragmentActivity
 
     @Override
     protected void onStart() {
-        if (mLocationSettingsStates != null && mLocationSettingsStates.isLocationUsable()) {
+//        if (mLocationSettingsStates != null && mLocationSettingsStates.isLocationUsable()) {
             if (!servicesConnected())
                 mGoogleApiClient.connect();
-        }
+//        }
         super.onStart();
     }
 
