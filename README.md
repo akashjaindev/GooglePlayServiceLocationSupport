@@ -1,7 +1,7 @@
 # GooglePlayServiceLocationSupport
 This library is used to handle location requests and maintains the flow with permission checks in marshmallow.
-<--
-![Square Initials](images/one.png)
+
+<!--![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
 ![Alternate Initial Square Image](images/three.png)
 ![Alternate Initial Circular Image](images/four.png)
