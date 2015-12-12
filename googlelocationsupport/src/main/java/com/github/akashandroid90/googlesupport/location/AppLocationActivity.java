@@ -18,37 +18,54 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 /**
  * Created by akash on 8/12/15.
  */
 public abstract class AppLocationActivity extends FragmentActivity
-        implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, LocationListener {
+        implements GoogleSupportLocation {
 
 
     private final int ACCESS_FINE_LOCATION = 101;
     private final int ACCESS_COARSE_LOCATION = 102;
     private final int ACCESS_LOCATION = 103;
     private final int REQUEST_CHECK_SETTINGS = 104;
-    private final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = 5000;
-    private final long MINIMUM_DISTANCE = 1000;
-    private final int MILLISECONDS_PER_SECOND = 100;
-    private final int UPDATE_INTERVAL_IN_SECONDS = 500;
-//    private final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
+
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
-    private LocationManager mLocationservice;
-//    private LocationSettingsStates mLocationSettingsStates;
+    private LocationManager mLocationService;
+
     private boolean enableUpdates;
 
+    /**
+     * this method gives GoogleApiClient object created
+     * @return GoogleApiClient
+     */
+    public GoogleApiClient getGoogleApiClient() {
+        return mGoogleApiClient;
+    }
+
+    /**
+     * this method gives LocationRequest object created
+     * @return LocationRequest
+     */
+    public LocationRequest getLocationRequest() {
+        return mLocationRequest;
+    }
+
+    /**
+     * this method gives LocationManager object created
+     * @return LocationManager
+     */
+    public LocationManager getLocationService() {
+        return mLocationService;
+    }
+    
     @Override
     public void onConnected(Bundle bundle) {
         checkLocationEnable();
@@ -122,7 +139,7 @@ public abstract class AppLocationActivity extends FragmentActivity
         mGoogleApiClient = new GoogleApiClient.Builder(this).addApi(LocationServices.API).enableAutoManage(this, this).
                 addConnectionCallbacks(this).addOnConnectionFailedListener(this).build();
 
-        mLocationservice = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationService = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         mLocationRequest = LocationRequest.create();
 
@@ -142,7 +159,7 @@ public abstract class AppLocationActivity extends FragmentActivity
      * @param distance used to set displacement for request make
      */
     public void setSmallestDisplacement(long distance) {
-        mLocationRequest.setSmallestDisplacement(MINIMUM_DISTANCE);
+        mLocationRequest.setSmallestDisplacement(distance);
         checkLocationEnable();
     }
 
@@ -228,8 +245,8 @@ public abstract class AppLocationActivity extends FragmentActivity
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, ACCESS_LOCATION);
 
             else {
-                Location locationGPS = mLocationservice.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                Location locationNet = mLocationservice.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                Location locationGPS = mLocationService.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                Location locationNet = mLocationService.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                 long GPSLocationTime = 0;
                 if (null != locationGPS) {
@@ -253,13 +270,13 @@ public abstract class AppLocationActivity extends FragmentActivity
                     && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_FINE_LOCATION);
             else
-                currentLocation = mLocationservice.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                currentLocation = mLocationService.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, ACCESS_COARSE_LOCATION);
             else
-                currentLocation = mLocationservice.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                currentLocation = mLocationService.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         }
         if (currentLocation != null)
             myCurrentLocation(currentLocation);
@@ -284,7 +301,7 @@ public abstract class AppLocationActivity extends FragmentActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
+//        final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
         switch (requestCode) {
             case REQUEST_CHECK_SETTINGS:
                 switch (resultCode) {
@@ -307,8 +324,4 @@ public abstract class AppLocationActivity extends FragmentActivity
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-    protected abstract void newLocation(Location location);
-
-    protected abstract void myCurrentLocation(Location currentLocation);
 }

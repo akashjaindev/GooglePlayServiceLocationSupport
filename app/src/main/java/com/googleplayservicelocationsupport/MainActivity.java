@@ -29,12 +29,12 @@ public class MainActivity extends AppLocationActivity {
     }
 
     @Override
-    protected void newLocation(Location location) {
+    public void newLocation(Location location) {
         mNewLocation.setText(location.getLatitude() + "," + location.getLongitude());
     }
 
     @Override
-    protected void myCurrentLocation(Location currentLocation) {
+    public void myCurrentLocation(Location currentLocation) {
         mOldLocation.setText(currentLocation.getLatitude() + "," + currentLocation.getLongitude());
     }
 }
