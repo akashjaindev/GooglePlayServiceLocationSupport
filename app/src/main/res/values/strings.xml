@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GooglePlayServiceSupport</string>
+    <string name="crash_text">App Crash</string>
+</resources>
