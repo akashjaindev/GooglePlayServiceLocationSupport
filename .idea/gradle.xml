@@ -11,14 +11,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/googlelocationsupport" />
+            <option value="$PROJECT_DIR$/google-support-location" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/googlelocationsupport" />
+            <option value="$PROJECT_DIR$/google-support-location" />
           </set>
         </option>
       </GradleProjectSettings>

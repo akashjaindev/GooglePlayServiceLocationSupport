@@ -1,1 +1,1 @@
-include ':app', ':googlelocationsupport'
+include ':app', ':google-support-location'
