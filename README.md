@@ -5,14 +5,16 @@ This library is used to handle location requests and maintains the flow with per
 ![Square Initials](images/two.png)
 ![Alternate Initial Square Image](images/three.png)
 ![Alternate Initial Circular Image](images/four.png)
-<!--Gradle
+Gradle
 -------------------------
 
 ```
+
 dependencies {
-    compile 'com.github.akashandroid90.googlelocationsupport:googlelocationsupport:1.0'
+    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.0'
 }
-```-->
+
+```
 
 Usage
 -----
