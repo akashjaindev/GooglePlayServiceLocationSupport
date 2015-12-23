@@ -1,10 +1,12 @@
 # GooglePlayServiceLocationSupport
 This library is used to handle location requests and maintains the flow with permission checks in marshmallow.
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GooglePlayServiceLocationSupport-green.svg?style=true)](https://android-arsenal.com/details/1/2939)
+
 ![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
-![Alternate Initial Square Image](images/three.png)
-![Alternate Initial Circular Image](images/four.png)
+![Square Image](images/three.png)
+![Image](images/four.png)
 Gradle
 -------------------------
 
