@@ -5,6 +5,8 @@ This library is used to handle location requests and maintains the flow with per
 
 [ ![Download](https://api.bintray.com/packages/akashandroid90/maven/google-support-location/images/download.svg) ](https://bintray.com/akashandroid90/maven/google-support-location/_latestVersion)
 
+<a href='https://bintray.com/akashandroid90/maven/google-support-location/view?source=watch' alt='Get automatic notifications about new "google-support-location" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
+
 ![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
 ![Square Image](images/three.png)
