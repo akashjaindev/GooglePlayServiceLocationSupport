@@ -3,6 +3,8 @@ This library is used to handle location requests and maintains the flow with per
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GooglePlayServiceLocationSupport-green.svg?style=true)](https://android-arsenal.com/details/1/2939)
 
+[ ![Download](https://api.bintray.com/packages/akashandroid90/maven/google-support-location/images/download.svg) ](https://bintray.com/akashandroid90/maven/google-support-location/_latestVersion)
+
 ![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
 ![Square Image](images/three.png)
