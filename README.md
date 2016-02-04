@@ -1,18 +1,26 @@
 # GooglePlayServiceLocationSupport
 This library is used to handle location requests and maintains the flow with permission checks in marshmallow.
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GooglePlayServiceLocationSupport-green.svg?style=true)](https://android-arsenal.com/details/1/2939)
+
+[ ![Download](https://api.bintray.com/packages/akashandroid90/maven/google-support-location/images/download.svg) ](https://bintray.com/akashandroid90/maven/google-support-location/_latestVersion)
+
+<a href='https://bintray.com/akashandroid90/maven/google-support-location/view?source=watch' alt='Get automatic notifications about new "google-support-location" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
+
 ![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
-![Alternate Initial Square Image](images/three.png)
-![Alternate Initial Circular Image](images/four.png)
-<!--Gradle
+![Square Image](images/three.png)
+![Image](images/four.png)
+Gradle
 -------------------------
 
 ```
+
 dependencies {
-    compile 'com.github.akashandroid90.googlelocationsupport:googlelocationsupport:1.0'
+    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.0'
 }
-```-->
+
+```
 
 Usage
 -----
