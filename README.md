@@ -17,7 +17,7 @@ Gradle
 ```
 
 dependencies {
-    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.0'
+    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.1'
 }
 
 ```
