@@ -7,6 +7,8 @@ This library is used to handle location requests and maintains the flow with per
 
 <a href='https://bintray.com/akashandroid90/maven/google-support-location/view?source=watch' alt='Get automatic notifications about new "google-support-location" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
 
+Try out the sample application [on the Android Market][1].
+
 ![Square Initials](images/one.png)
 ![Square Initials](images/two.png)
 ![Square Image](images/three.png)
@@ -57,3 +59,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+
+
+
+
+
+
+[1]: https://play.google.com/store/apps/details?id=com.googleplayservicelocationsupport
