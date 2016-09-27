@@ -19,7 +19,7 @@ Gradle
 ```
 
 dependencies {
-    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.8'
+    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.9'
 }
 
 ```
@@ -31,6 +31,10 @@ for activity
 
 ```java
 public class MainActivity extends AppLocationActivity {}
+```
+or 
+```java
+public class MainActivity extends AppLocationCompatActivity {}
 ```
 and for fragment
 ```java
