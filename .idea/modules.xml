@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GooglePlayServiceLocationSupport.iml" filepath="$PROJECT_DIR$/GooglePlayServiceLocationSupport.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/google-support-location/google-support-location.iml" filepath="$PROJECT_DIR$/google-support-location/google-support-location.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GooglePlayServiceLocationSupport.iml" filepath="$PROJECT_DIR$/.idea/modules/GooglePlayServiceLocationSupport.iml" />
     </modules>
   </component>
 </project>

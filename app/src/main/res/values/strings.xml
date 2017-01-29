@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">GooglePlayServiceSupport</string>
+    <string name="app_name">Location Support</string>
     <string name="crash_text">App Crash</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5883105630361246/1515339811</string>
+    <string name="interstitial_ad">ca-app-pub-5883105630361246/9664373019</string>
+    <string name="menu_other_apps">Other Apps</string>
+    <string name="menu_github">Github</string>
+    <string name="menu_play_store">Rate us</string>
+    <string name="menu_share">Share</string>
 </resources>

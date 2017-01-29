@@ -1,16 +1,25 @@
 package com.googleplayservicelocationsupport;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.akashandroid90.googlesupport.location.AppLocationFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.location.LocationRequest;
 
 /**
@@ -18,6 +27,8 @@ import com.google.android.gms.location.LocationRequest;
  */
 public class LocationFragment extends AppLocationFragment {
     private TextView mOldLocation, mNewLocation;
+    public LocationService mService;
+
     @Override
     public void newLocation(Location location) {
         mNewLocation.setText(location.getLatitude() + "," + location.getLongitude());
@@ -26,6 +37,24 @@ public class LocationFragment extends AppLocationFragment {
     @Override
     public void myCurrentLocation(Location currentLocation) {
         mOldLocation.setText(currentLocation.getLatitude() + "," + currentLocation.getLongitude());
+    }
+
+    @Override
+    public void onActivityResultError(int resultCode, ServiceError serviceError, ConnectionResult connectionResult) {
+        switch (serviceError) {
+            case GOOGLE_PLAY_SERVICE_ERROR:
+                break;
+            case LOCATION_SETTING_ERROR:
+                break;
+        }
+    }
+
+    @Override
+    public void onServiceDialogCancel(DialogInterface dialog, ConnectionResult connectionResult) {
+        if (getGoogleApiAvailability().isUserResolvableError(connectionResult.getErrorCode()))
+            showServiceErrorDialog(connectionResult);
+        else
+            Toast.makeText(mContext, connectionResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Nullable
@@ -37,10 +66,36 @@ public class LocationFragment extends AppLocationFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         view.findViewById(R.id.btn_fragment).setVisibility(View.GONE);
+        view.findViewById(R.id.btn_location).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.btn_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mService!=null)
+                    mService.requestForCurrentLocation();
+                else {
+                    mContext.bindService(new Intent(mContext, LocationService.class), new ServiceConnection() {
+                        @Override
+                        public void onServiceConnected(ComponentName name, IBinder service) {
+                            mService= ((LocationService.LocalBinder<LocationService>)service).getService() ;
+                        }
+
+                        @Override
+                        public void onServiceDisconnected(ComponentName name) {
+                            mService=null;
+                        }
+                    }, Context.BIND_AUTO_CREATE);
+                }
+            }
+        });
+        view.findViewById(R.id.toolbar).setVisibility(View.GONE);
         mOldLocation = (TextView) view.findViewById(R.id.oldlocation);
         mNewLocation = (TextView) view.findViewById(R.id.newlocation);
+        AdView mAdView = (AdView) view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         super.onViewCreated(view, savedInstanceState);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         new Handler().postDelayed(new Runnable() {
@@ -48,7 +103,7 @@ public class LocationFragment extends AppLocationFragment {
             public void run() {
                 setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             }
-        },100);
+        }, 100);
         super.onActivityResult(requestCode, resultCode, data);
     }
 }

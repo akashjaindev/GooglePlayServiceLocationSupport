@@ -1,26 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
+    compileSdkVersion compilesdk
+    buildToolsVersion buildtool
     defaultConfig {
         applicationId "com.googleplayservicelocationsupport"
-        minSdkVersion 11
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion minsdk
+        targetSdkVersion targetsdk
+        versionCode 6
+        versionName "1.4"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile project(':googlelocationsupport')
+//    compile 'com.github.akashandroid90.googlesupport:google-support-location:1.15'
+    compile "com.google.firebase:firebase-ads:$playservicelib"
+    compile project(':google-support-location')
 }
+apply plugin: 'com.google.gms.google-services'
